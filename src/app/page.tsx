@@ -1,7 +1,11 @@
 import { db } from "@/server/db";
 
 export default async function HomePage() {
-  const listings = await db.listing.findMany();
+  const listings = await db.listing.findMany({
+    where: {
+      valid: true,
+    },
+  });
   const supportedCompanies = ["Bank of America", "Guggenheim", "Moelis", "UBS"];
   return (
     <main className="min-h-screen bg-white">
