@@ -34,7 +34,7 @@ export async function scrapeGuggenheim() {
           "sec-fetch-mode": "cors",
           "sec-fetch-site": "same-origin",
         },
-        body: `{"appliedFacets":{},"limit":20,"offset":${offset},"searchText":""}`,
+        body: `{"appliedFacets":{"timeType":["447f9e9e2f574f948599c2ae94b1376c"]},"limit":20,"offset":${offset},"searchText":""}`,
         method: "POST",
       }
     );
@@ -50,8 +50,9 @@ export async function scrapeGuggenheim() {
   const jobs: Listing[] = allJobs.map((job) => {
     return {
       title: job.title,
-      link: job.externalPath,
+      link: `https://guggenheim.wd1.myworkdayjobs.com/Guggenheim_Careers_Campus${job.externalPath}`,
       location: job.locationsText,
+      company: "Guggenheim",
     };
   });
   return jobs;

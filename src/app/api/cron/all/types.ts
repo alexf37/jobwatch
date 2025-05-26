@@ -3,4 +3,5 @@ export type Listing = {
   description?: string;
   link: string;
   location?: string;
+  company: string;
 };

@@ -49,8 +49,9 @@ export async function scrapeMoelis() {
   const jobs: Listing[] = allJobs.map((job) => {
     return {
       title: job.title,
-      link: job.externalPath,
+      link: `https://moelis.wd1.myworkdayjobs.com/en-US/University-Hires${job.externalPath}`,
       location: job.locationsText,
+      company: "Moelis",
     };
   });
   return jobs;

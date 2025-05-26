@@ -25,7 +25,7 @@ const schema = z.object({
 });
 export async function scrapeBofa() {
   const res = await fetch(
-    "https://careers.bankofamerica.com/services/campusjobssearchservlet?start=0&rows=1000&search=getAllJobs",
+    "https://careers.bankofamerica.com/services/campusjobssearchservlet?term=analyst&start=0&rows=1000&search=jobsByKeyword",
     {
       headers: {
         accept: "application/json, text/javascript, */*; q=0.01",
@@ -47,12 +47,15 @@ export async function scrapeBofa() {
     }
   );
   const json = schema.parse(await res.json());
-  const jobs: Listing[] = json.jobsList.map((job) => {
-    return {
-      title: job.postingTitle,
-      link: job.jcrURL,
-      location: job.location,
-    };
-  });
+  const jobs: Listing[] = json.jobsList
+    .filter((job) => job.timeType === "Full time")
+    .map((job) => {
+      return {
+        title: job.postingTitle,
+        link: `https://careers.bankofamerica.com${job.jcrURL.split("esomprank")[0]}`,
+        location: job.location,
+        company: "Bank of America",
+      };
+    });
   return jobs;
 }

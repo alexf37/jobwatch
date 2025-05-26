@@ -72,6 +72,7 @@ export async function scrapeUbs() {
       title: job.title,
       link: job.link,
       location: job.location,
+      company: "UBS",
     };
   });
   return jobs;

@@ -45,6 +45,7 @@ export async function scrapeJefferies() {
     jobs.push({
       title,
       link,
+      company: "Jefferies",
     });
   });
   return jobs;

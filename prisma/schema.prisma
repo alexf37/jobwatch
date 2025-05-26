@@ -11,9 +11,12 @@ datasource db {
 }
 
 model Listing {
-    id          String  @id
+    id          String   @id
     title       String
     link        String
     location    String?
     description String?
+    company     String
+    createdAt   DateTime @default(now())
+    valid       Boolean  @default(true)
 }
