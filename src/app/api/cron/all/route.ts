@@ -22,7 +22,7 @@ import z from "zod";
 const resend = new Resend(env.RESEND_API_KEY);
 
 async function sendEmail(newListings: Listing[]) {
-  if (newListings.length !== undefined) {
+  if (newListings.length === 0) {
     return;
   }
   console.log("sending email");
