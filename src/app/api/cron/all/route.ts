@@ -27,8 +27,8 @@ async function sendEmail(newListings: Listing[]) {
   }
   console.log("sending email");
   const { data, error } = await resend.emails.send({
-    from: "Alex <alex@jobwatch-noreply.alexfoster.dev>",
-    to: ["dabsketicito2@gmail.com"],
+    from: "Alex's Job Hunter <alex@jobwatch-noreply.alexfoster.dev>",
+    to: ["dabsketicito2@gmail.com", "frh4ps@virginia.edu"],
     subject: `${newListings.length} new job listing${newListings.length === 1 ? "" : "s"} for you`,
     react: JobAlertEmail({
       jobListings: newListings,
