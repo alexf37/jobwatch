@@ -19,4 +19,5 @@ model Listing {
     company     String
     createdAt   DateTime @default(now())
     valid       Boolean  @default(true)
+    reason      String
 }
