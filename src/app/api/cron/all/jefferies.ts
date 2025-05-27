@@ -1,4 +1,3 @@
-// done
 // has a captcha
 import { JSDOM } from "jsdom";
 import type { Listing } from "./types";
