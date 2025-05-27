@@ -1,5 +1,6 @@
 "use client";
 
+import { type Listing } from "@prisma/client";
 import { useState } from "react";
 
 // Define the Listing type based on your Prisma schema
@@ -11,16 +12,6 @@ import { useState } from "react";
 // description: string | null
 // valid: boolean
 // createdAt: Date (or string)
-
-interface Listing {
-  id: string;
-  title: string;
-  link: string;
-  location?: string | null;
-  description?: string | null;
-  valid: boolean;
-  createdAt: string; // Changed from Date to string
-}
 
 interface ListingsProps {
   allListings: Listing[];
@@ -89,6 +80,11 @@ export default function Listings({ allListings }: ListingsProps) {
                         </span>
                       )}
                     </h3>
+                    {listing.company && (
+                      <p className="text-sm text-gray-700 font-medium mt-1">
+                        {listing.company}
+                      </p>
+                    )}
                     {listing.location && (
                       <p className="text-sm text-gray-500 mt-1">
                         {listing.location}

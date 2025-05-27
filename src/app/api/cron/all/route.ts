@@ -52,20 +52,20 @@ async function verifyListing(listing: Listing) {
   };
   try {
     const response = await generateObject({
-      model: openai("gpt-4.1"),
+      model: openai("gpt-4.1-mini"),
       prompt: `You are a screener employed by a job listing aggregation site whose purpose is to ensure that all job listings adhere to the following criteria:
         1. The listing is for a full time job (not part time, internship, temporary, or a summer-only position).
         2. The listing is for a job in investment banking specifically. Use your best judgement for what qualifies as investment banking, and if you are unsure, assume it does qualify. I don't mind false positives but I don't want false negatives.
         3. The position is in the United States and in English.
         4. The listing is for a 2026 position specifically. Do NOT accept any 2025 positions. 2027 is okay if you find it.
-        5. The listing is for an analyst position, not an associate position. If the listing doesn't specify, assume it's an analyst position.
+        5. The listing is for an analyst position, not an associate position. If the listing doesn't specify, use your best judgement. Again, I don't mind false positives but I don't want false negatives. Just don't accept any which are obviously not analyst positions.
     
-        All of the above criteria must be met for the listing to be accepted.
+        ALL of the above criteria must be met for the listing to be accepted.
     
         Here is the listing for you to verify right now:
         ${JSON.stringify(listingForAI)}
     
-        Please return a JSON object with a single boolean field, \`valid\`, set according to whether the listing meets all of the criteria or not. If you are unsure, assume it valid.
+        Please return a JSON object with a single boolean field, \`valid\`, set according to whether the listing meets all of the criteria or not.
         Use the \`reasoning\` field to reason through your decision. Put the reasoning field before the \`valid\` field in the JSON you output.
         `,
       schema: z.object({
@@ -88,6 +88,7 @@ async function scrapeAll() {
       //   scrapeJefferies(),
       scrapeMoelis(),
       scrapeUbs(),
+      scrapeCiti(),
     ])
   ).flat();
 }
@@ -139,6 +140,10 @@ export async function GET() {
   const emailPromise = sendEmail(newListings.filter((l) => l.valid));
 
   await Promise.all([deletePromise, createPromise, emailPromise]);
+
+  return Response.json({
+    success: true,
+  });
 }
 
 await GET();

@@ -8,12 +8,13 @@ export default async function HomePage() {
     },
   });
 
-  const supportedCompanies = ["Bank of America", "Guggenheim", "Moelis", "UBS"];
-
-  const serializableListings = allListings.map((listing) => ({
-    ...listing,
-    createdAt: listing.createdAt.toISOString(),
-  }));
+  const supportedCompanies = [
+    "Bank of America",
+    "Guggenheim",
+    "Moelis",
+    "UBS",
+    "Citi",
+  ];
 
   return (
     <main className="min-h-screen bg-white">
@@ -41,7 +42,7 @@ export default async function HomePage() {
         </div>
 
         {/* Render the Listings component */}
-        <Listings allListings={serializableListings} />
+        <Listings allListings={allListings} />
       </div>
     </main>
   );
