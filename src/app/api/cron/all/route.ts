@@ -99,7 +99,7 @@ async function scrapeAll() {
       scrapeMoelis(),
       scrapeUbs(),
       scrapeCiti(),
-      scrapeWellsFargo(),
+      //   scrapeWellsFargo(),
     ])
   ).flat();
 }
