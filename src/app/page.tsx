@@ -14,6 +14,7 @@ export default async function HomePage() {
     "Moelis",
     "UBS",
     "Citi",
+    "JPMorgan Chase",
   ];
 
   return (

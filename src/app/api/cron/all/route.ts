@@ -86,6 +86,7 @@ async function scrapeAll() {
       scrapeBofa(),
       scrapeGuggenheim(),
       //   scrapeJefferies(),
+      scrapeJpmorgan(),
       scrapeMoelis(),
       scrapeUbs(),
       scrapeCiti(),
@@ -140,6 +141,8 @@ export async function GET() {
   const emailPromise = sendEmail(newListings.filter((l) => l.valid));
 
   await Promise.all([deletePromise, createPromise, emailPromise]);
+
+  console.log(newListings.filter((l) => l.valid).map((l) => l.title));
 
   return Response.json({
     success: true,
