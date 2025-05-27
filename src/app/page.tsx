@@ -15,7 +15,6 @@ export default async function HomePage() {
     "UBS",
     "Citi",
     "JPMorgan Chase",
-    "Wells Fargo",
   ];
 
   return (
