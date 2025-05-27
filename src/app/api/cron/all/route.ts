@@ -52,7 +52,7 @@ async function verifyListing(listing: Listing) {
   };
   try {
     const response = await generateObject({
-      model: openai("gpt-4.1-mini"),
+      model: openai("gpt-4.1"),
       prompt: `You are a screener employed by a job listing aggregation site whose purpose is to ensure that all job listings adhere to the following criteria:
         1. The listing is for a full time job (not part time, internship, temporary, or a summer-only position).
         2. The listing is for a job in investment banking specifically. Use your best judgement for what qualifies as investment banking, and if you are unsure, assume it does qualify. I don't mind false positives but I don't want false negatives.
@@ -136,7 +136,7 @@ export async function GET() {
     data: newListings,
   });
 
-  const emailPromise = sendEmail(newListings);
+  const emailPromise = sendEmail(newListings.filter((l) => l.valid));
 
   await Promise.all([deletePromise, createPromise, emailPromise]);
 }
