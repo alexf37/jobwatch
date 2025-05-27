@@ -152,4 +152,6 @@ export async function GET() {
   });
 }
 
-await GET();
+if (env.NODE_ENV === "development") {
+  await GET();
+}
