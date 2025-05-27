@@ -14,7 +14,6 @@ export async function scrapeCiti() {
   const allJobs = [];
   let page = 1;
   while (true) {
-    console.log(`Scraping page ${page}`);
     const res = await fetch(
       `https://jobs.citi.com/search-jobs/results?ActiveFacetID=0&CurrentPage=${page}&RecordsPerPage=1000&TotalContentResults=&Distance=50&RadiusUnitType=0&Keywords=Investment+Banking&Location=New+York%2C+NY&Latitude=40.71427&Longitude=-74.00597&ShowRadius=True&IsPagination=False&CustomFacetName=&FacetTerm=&FacetType=0&SearchResultsModuleName=SearchResults+-+Technology&SearchFiltersModuleName=Search+Filters&SortCriteria=0&SortDirection=0&SearchType=1&LocationType=4&LocationPath=6252001-5128638-5128581&OrganizationIds=287&PostalCode=&ResultsType=0&fc=&fl=&fcf=&afc=&afl=&afcf=&TotalContentPages=NaN`,
       {
