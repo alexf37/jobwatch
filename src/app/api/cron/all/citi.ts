@@ -1,3 +1,4 @@
+// done
 import z from "zod";
 import { JSDOM } from "jsdom";
 import type { Listing } from "./types";
@@ -64,7 +65,7 @@ export async function scrapeCiti() {
       jobListings.push({
         title,
         location,
-        link,
+        link: `https://jobs.citi.com${link}`,
         company: "Citi",
       });
     });
