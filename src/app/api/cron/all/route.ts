@@ -60,7 +60,7 @@ async function verifyListing(listing: Listing) {
         1. The listing is for a full time job. That is, not part time, internship, temporary, or a summer-only position.
         2. The listing is for a job in investment banking. Some listings may not use the term "investment banking"---they may use terms like advisory, M&A, restructuring, or coverage. These are all valid. Use your best judgement for what qualifies, and if you are unsure, assume it does qualify. Err on the side of accepting more listings. I don't mind false positives but I don't want false negatives.
         3. The position is in the United States and in English.
-        4. The listing is for a 2026 position specifically. Do NOT accept any 2025 positions. 2027 is okay if you find it.
+        4. The listing is for a 2026 position specifically. Do NOT accept any 2025 positions. 2027 is okay if you find it. If it doesn't specify, it passes this criterion, just in case.
         5. The listing is for an analyst position, not an associate position. If the listing doesn't specify, use your best judgement, but err on the side of accepting more listings. Again, I don't mind false positives but I don't want false negatives. Just don't accept any which are obviously not analyst positions.
     
         ALL of the above criteria must be met for the listing to be accepted.
