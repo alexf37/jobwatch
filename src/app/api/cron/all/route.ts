@@ -56,9 +56,9 @@ async function verifyListing(listing: Listing) {
       prompt: `You are a screener employed by a job listing aggregation site whose purpose is to ensure that all job listings adhere to the following criteria:
         1. The listing is for a full time job (not part time, internship, temporary, or a summer-only position).
         2. The listing is for a job in investment banking specifically. Use your best judgement for what qualifies as investment banking, and if you are unsure, assume it does qualify. I don't mind false positives but I don't want false negatives.
-        3. The position is in the United States.
+        3. The position is in the United States and in English.
         4. The listing is for a 2026 position specifically. Do NOT accept any 2025 positions. 2027 is okay if you find it.
-        5. The listing is for an analyst position, not an associate position. If the listing doesn't specify, assume it's an analyst position and accept it.
+        5. The listing is for an analyst position, not an associate position. If the listing doesn't specify, assume it's an analyst position.
     
         All of the above criteria must be met for the listing to be accepted.
     
