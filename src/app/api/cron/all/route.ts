@@ -22,6 +22,9 @@ import z from "zod";
 const resend = new Resend(env.RESEND_API_KEY);
 
 async function sendEmail(newListings: Listing[]) {
+  if (env.NODE_ENV === "development") {
+    return;
+  }
   if (newListings.length === 0) {
     return;
   }
